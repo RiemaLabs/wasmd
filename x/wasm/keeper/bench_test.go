@@ -7,9 +7,8 @@ import (
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-
 	"github.com/CosmWasm/wasmd/x/wasm/types"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 )
 
 // BenchmarkGasNormalization benchmarks secp256k1 verification which is 1000 gas based on cpu time.
@@ -18,7 +17,7 @@ import (
 // https://github.com/cosmos/cosmos-sdk/blob/90e9370bd80d9a3d41f7203ddb71166865561569/crypto/keys/internal/benchmarking/bench.go#L48-L62
 // And thus under the GO license (BSD style)
 func BenchmarkGasNormalization(b *testing.B) {
-	priv := secp256k1.GenPrivKey()
+	priv := taproot.GenPrivKey()
 	pub := priv.PubKey()
 
 	// use a short message, so this time doesn't get dominated by hashing.

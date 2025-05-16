@@ -16,7 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/address"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 	"github.com/cosmos/cosmos-sdk/std"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/authz"
@@ -131,9 +131,7 @@ func BenchmarkUnpackAny(b *testing.B) {
 	interfaceRegistry, err := codectypes.NewInterfaceRegistryWithOptions(codectypes.InterfaceRegistryOptions{
 		ProtoFiles: proto.HybridResolver,
 		SigningOptions: signing.Options{
-			AddressCodec: address.Bech32Codec{
-				Bech32Prefix: sdk.GetConfig().GetBech32AccountAddrPrefix(),
-			},
+			AddressCodec: address.NewTaprootCodec(&sdk.BitcoinNetParams),
 			ValidatorAddressCodec: address.Bech32Codec{
 				Bech32Prefix: sdk.GetConfig().GetBech32ValidatorAddrPrefix(),
 			},
@@ -203,14 +201,14 @@ func BenchmarkUnpackAny(b *testing.B) {
 
 func bankSendMsg(info *AppInfo) ([]sdk.Msg, error) {
 	// Precompute all txs
-	rcpt := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address())
+	rcpt := sdk.AccAddress(taproot.GenPrivKey().PubKey().Address())
 	coins := sdk.Coins{sdk.NewInt64Coin(info.Denom, 100)}
 	sendMsg := banktypes.NewMsgSend(info.MinterAddr, rcpt, coins)
 	return []sdk.Msg{sendMsg}, nil
 }
 
 func cw20TransferMsg(info *AppInfo) ([]sdk.Msg, error) {
-	rcpt := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address())
+	rcpt := sdk.AccAddress(taproot.GenPrivKey().PubKey().Address())
 	transfer := cw20ExecMsg{Transfer: &transferMsg{
 		Recipient: rcpt.String(),
 		Amount:    765,

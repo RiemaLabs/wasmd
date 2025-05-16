@@ -11,7 +11,7 @@ import (
 
 	sdkmath "cosmossdk.io/math"
 
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	v1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
@@ -87,7 +87,7 @@ func TestGovVoteByContract(t *testing.T) {
 	for name, spec := range specs {
 		t.Run(name, func(t *testing.T) {
 			// given a unique recipient
-			recipientAddr := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address().Bytes())
+			recipientAddr := sdk.AccAddress(taproot.GenPrivKey().PubKey().Address().Bytes())
 			// and a new proposal
 			payloadMsg := &distributiontypes.MsgCommunityPoolSpend{
 				Authority: govAcctAddr.String(),

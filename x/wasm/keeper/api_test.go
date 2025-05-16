@@ -16,7 +16,7 @@ func TestValidateAddress(t *testing.T) {
 			valid: true,
 		},
 		"invalid address": {
-			human: "cosmos1invalid",
+			human: "bc1pinvalid",
 			valid: false,
 		},
 	}

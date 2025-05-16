@@ -347,7 +347,7 @@ func TestVerifyAddressLen(t *testing.T) {
 			src: bytes.Repeat([]byte{1}, 32),
 		},
 		"valid legacy address": {
-			src: bytes.Repeat([]byte{1}, 20),
+			src: bytes.Repeat([]byte{1}, 32),
 		},
 		"address too short for legacy": {
 			src:    bytes.Repeat([]byte{1}, 19),

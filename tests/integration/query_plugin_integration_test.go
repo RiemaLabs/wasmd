@@ -1074,7 +1074,7 @@ func TestDeterministicJsonMarshal(t *testing.T) {
 			&authtypes.QueryAccountResponse{},
 			func() proto.Message {
 				account := authtypes.BaseAccount{
-					Address: "cosmos1f8uxultn8sqzhznrsz3q77xwaquhgrsg6jyvfy",
+					Address: "bc1pag8ppv5eq0qm5d9sz3pvpfkgs3x8ghnj52arrcux7gmhuexdn0vsxlacsr",
 				}
 				accountResponse, err := codectypes.NewAnyWithValue(&account)
 				require.NoError(t, err)

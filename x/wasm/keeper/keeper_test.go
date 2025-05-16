@@ -419,11 +419,11 @@ func TestInstantiate(t *testing.T) {
 	// create with no balance is also legal
 	gotContractAddr, _, err := keepers.ContractKeeper.Instantiate(ctx.WithEventManager(em), example.CodeID, creator, nil, initMsgBz, "demo contract 1", nil)
 	require.NoError(t, err)
-	require.Equal(t, "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr", gotContractAddr.String())
+	require.Equal(t, "bc1p4hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sm7cwu0", gotContractAddr.String())
 
 	gasAfter := ctx.GasMeter().GasConsumed()
 	if types.EnableGasVerification {
-		require.Equal(t, uint64(0x1bca5), gasAfter-gasBefore)
+		require.Equal(t, uint64(0x1c3f3), gasAfter-gasBefore)
 	}
 
 	// ensure it is stored properly
@@ -923,7 +923,7 @@ func TestExecute(t *testing.T) {
 
 	addr, _, err := keepers.ContractKeeper.Instantiate(ctx, contractID, creator, nil, initMsgBz, "demo contract 3", deposit)
 	require.NoError(t, err)
-	require.Equal(t, "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr", addr.String())
+	require.Equal(t, "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp", addr.String())
 
 	// ensure bob doesn't exist
 	bobAcct := accKeeper.GetAccount(ctx, bob)
@@ -1686,7 +1686,7 @@ func TestSudo(t *testing.T) {
 	require.NoError(t, err)
 	addr, _, err := keepers.ContractKeeper.Instantiate(ctx, contractID, creator, nil, initMsgBz, "demo contract 3", deposit)
 	require.NoError(t, err)
-	require.Equal(t, "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr", addr.String())
+	require.Equal(t, "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp", addr.String())
 
 	// the community is broke
 	_, community := keyPubAddr()

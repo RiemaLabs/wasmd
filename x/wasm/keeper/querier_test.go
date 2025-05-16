@@ -831,7 +831,7 @@ func TestQueryCodeInfo(t *testing.T) {
 	ctx, keepers := CreateTestInput(t, false, AvailableCapabilities)
 	keeper := keepers.WasmKeeper
 
-	anyAddress, err := sdk.AccAddressFromBech32("cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz")
+	anyAddress, err := sdk.AccAddressFromBech32("bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98")
 	require.NoError(t, err)
 	specs := map[string]struct {
 		codeID       uint64
@@ -883,7 +883,7 @@ func TestQueryCode(t *testing.T) {
 	ctx, keepers := CreateTestInput(t, false, AvailableCapabilities)
 	keeper := keepers.WasmKeeper
 
-	anyAddress, err := sdk.AccAddressFromBech32("cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz")
+	anyAddress, err := sdk.AccAddressFromBech32("bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98")
 	require.NoError(t, err)
 	specs := map[string]struct {
 		codeID       uint64
@@ -938,7 +938,7 @@ func TestQueryCodeInfoList(t *testing.T) {
 	ctx, keepers := CreateTestInput(t, false, AvailableCapabilities)
 	keeper := keepers.WasmKeeper
 
-	anyAddress, err := sdk.AccAddressFromBech32("cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz")
+	anyAddress, err := sdk.AccAddressFromBech32("bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98")
 	require.NoError(t, err)
 	codeInfoWithConfig := func(accessConfig types.AccessConfig) types.CodeInfo {
 		codeInfo := types.CodeInfoFixture(types.WithSHA256CodeHash(wasmCode))
@@ -1163,7 +1163,7 @@ func TestQueryBuildAddress(t *testing.T) {
 		"invalid code hash": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "invalid",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "61",
 				InitArgs:       nil,
 			},
@@ -1181,7 +1181,7 @@ func TestQueryBuildAddress(t *testing.T) {
 		"invalid salt": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "13a1fc994cc6d1c81b746ee0c0ff6f90043875e0bf1d9be6b7d779fc978dc2a5",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "invalid",
 				InitArgs:       nil,
 			},
@@ -1190,7 +1190,7 @@ func TestQueryBuildAddress(t *testing.T) {
 		"empty salt": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "13a1fc994cc6d1c81b746ee0c0ff6f90043875e0bf1d9be6b7d779fc978dc2a5",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "",
 				InitArgs:       nil,
 			},
@@ -1199,7 +1199,7 @@ func TestQueryBuildAddress(t *testing.T) {
 		"invalid init args": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "13a1fc994cc6d1c81b746ee0c0ff6f90043875e0bf1d9be6b7d779fc978dc2a5",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "61",
 				InitArgs:       []byte(`invalid`),
 			},
@@ -1208,24 +1208,24 @@ func TestQueryBuildAddress(t *testing.T) {
 		"valid - without init args": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "13a1fc994cc6d1c81b746ee0c0ff6f90043875e0bf1d9be6b7d779fc978dc2a5",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "61",
 				InitArgs:       nil,
 			},
 			exp: &types.QueryBuildAddressResponse{
-				Address: "cosmos165fz7lnnt6e08knjqsz6fnz9drs7gewezyq3pl5uspc3zgt5lldq4ge3pl",
+				Address: "bc1pavk7zuj24sevyppzpntt4xf80fx24laxw07r8uvyw9r5quf58slqng96a6",
 			},
 			expErr: nil,
 		},
 		"valid - with init args": {
 			src: &types.QueryBuildAddressRequest{
 				CodeHash:       "13a1fc994cc6d1c81b746ee0c0ff6f90043875e0bf1d9be6b7d779fc978dc2a5",
-				CreatorAddress: "cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz",
+				CreatorAddress: "bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98",
 				Salt:           "61",
-				InitArgs:       []byte(`{"verifier":"cosmos100dejzacpanrldpjjwksjm62shqhyss44jf5xz"}`),
+				InitArgs:       []byte(`{"verifier":"bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98"}`),
 			},
 			exp: &types.QueryBuildAddressResponse{
-				Address: "cosmos150kq3ggdvc9lftcv6ns75t3v6lcpxdmvuwtqr6e9fc029z6h4maqepgss6",
+				Address: "bc1pwgzj4w75yvmtn0nyw3cuyfkve4xzns0m8gm05xz75mcpvuud42sqck25me",
 			},
 			expErr: nil,
 		},
