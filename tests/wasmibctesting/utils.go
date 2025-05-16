@@ -26,7 +26,7 @@ import (
 	"cosmossdk.io/math"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -445,7 +445,7 @@ func NewTestChainWithValSet(t *testing.T, coord *ibctesting.Coordinator, appFact
 
 	// generate genesis accounts
 	for i := 0; i < MaxAccounts; i++ {
-		senderPrivKey := secp256k1.GenPrivKey()
+		senderPrivKey := taproot.GenPrivKey()
 		acc := authtypes.NewBaseAccount(senderPrivKey.PubKey().Address().Bytes(), senderPrivKey.PubKey(), uint64(i), 0)
 		amount, ok := math.NewIntFromString("10000000000000000000")
 		require.True(t, ok)

@@ -56,11 +56,11 @@ func initRecurseContract(t *testing.T) (contract sdk.AccAddress, ctx sdk.Context
 
 func TestGasCostOnQuery(t *testing.T) {
 	const (
-		GasNoWork           uint64 = 63_987
-		GasNoWorkDiscounted uint64 = 5_968
+		GasNoWork           uint64 = 64_136
+		GasNoWorkDiscounted uint64 = 6_117
 		// Note: about 100 SDK gas (10k CosmWasm gas) for each round of sha256
-		GasWork50           uint64 = 64_234 // this is a little shy of 50k gas - to keep an eye on the limit
-		GasWork50Discounted uint64 = 6_207
+		GasWork50           uint64 = 64_389 // this is a little shy of 50k gas - to keep an eye on the limit
+		GasWork50Discounted uint64 = 6_363
 
 		GasReturnUnhashed uint64 = 89
 		GasReturnHashed   uint64 = 86
@@ -204,6 +204,7 @@ func TestGasOnExternalQuery(t *testing.T) {
 	}
 }
 
+// @nubit: TODO: Fix this test.
 func TestLimitRecursiveQueryGas(t *testing.T) {
 	// The point of this test from https://github.com/CosmWasm/cosmwasm/issues/456
 	// Basically, if I burn 90% of gas in CPU loop, then query out (to my self)
@@ -214,7 +215,7 @@ func TestLimitRecursiveQueryGas(t *testing.T) {
 
 	const (
 		// Note: about 100 SDK gas (10k CosmWasm gas) for each round of sha256
-		GasWork2k uint64 = 76_817 // = SetupContractCost + x // we have 6x gas used in cpu than in the instance
+		GasWork2k uint64 = 76_971 // = SetupContractCost + x // we have 6x gas used in cpu than in the instance
 
 		GasWork2kDiscounted uint64 = 18_264 + 432
 

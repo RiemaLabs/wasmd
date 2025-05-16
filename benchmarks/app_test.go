@@ -19,7 +19,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	cryptocodec "github.com/cosmos/cosmos-sdk/crypto/codec"
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 	"github.com/cosmos/cosmos-sdk/testutil/mock"
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -127,7 +127,7 @@ func SetupWithGenesisAccountsAndValSet(b testing.TB, db dbm.DB, genAccs []authty
 
 type AppInfo struct {
 	App          *app.WasmApp
-	MinterKey    *secp256k1.PrivKey
+	MinterKey    *taproot.PrivKey
 	MinterAddr   sdk.AccAddress
 	ContractAddr string
 	Denom        string
@@ -138,7 +138,7 @@ type AppInfo struct {
 
 func InitializeWasmApp(b testing.TB, db dbm.DB, numAccounts int) AppInfo {
 	// constants
-	minter := secp256k1.GenPrivKey()
+	minter := taproot.GenPrivKey()
 	addr := sdk.AccAddress(minter.PubKey().Address())
 	denom := "uatom"
 
@@ -153,7 +153,7 @@ func InitializeWasmApp(b testing.TB, db dbm.DB, numAccounts int) AppInfo {
 		Coins:   sdk.NewCoins(sdk.NewInt64Coin(denom, 100000000000)),
 	}
 	for i := 0; i <= numAccounts; i++ {
-		acct := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address()).String()
+		acct := sdk.AccAddress(taproot.GenPrivKey().PubKey().Address()).String()
 		if i == 0 {
 			acct = addr.String()
 		}
@@ -190,7 +190,7 @@ func InitializeWasmApp(b testing.TB, db dbm.DB, numAccounts int) AppInfo {
 	// instantiate the contract
 	initialBalances := make([]balance, numAccounts+1)
 	for i := 0; i <= numAccounts; i++ {
-		acct := sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address()).String()
+		acct := sdk.AccAddress(taproot.GenPrivKey().PubKey().Address()).String()
 		if i == 0 {
 			acct = addr.String()
 		}

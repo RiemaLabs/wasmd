@@ -23,7 +23,7 @@ import (
 func TestOnRecvPacket(t *testing.T) {
 	anyRelayerAddr := sdk.AccAddress(rand.Bytes(address.Len))
 	anyContractIBCPkg := IBCPacketFixture(func(p *channeltypes.Packet) {
-		p.DestinationPort = "wasm.cosmos1w09vr7rpe2agu0kg2zlpkdckce865l3zps8mxjurxthfh3m7035qe5hh7f"
+		p.DestinationPort = "wasm.bc1p953esr07atlr5j6h5w4a25r3t4lyn6rudqak986mga7zkv732p5qk9xq78"
 	})
 	myCustomEvent := sdk.NewEvent("testing")
 	specs := map[string]struct {
@@ -44,7 +44,7 @@ func TestOnRecvPacket(t *testing.T) {
 					Type: "ibc_packet_received",
 					Attributes: []abci.EventAttribute{
 						{Key: "module", Value: "wasm"},
-						{Key: "_contract_address", Value: "cosmos1w09vr7rpe2agu0kg2zlpkdckce865l3zps8mxjurxthfh3m7035qe5hh7f"},
+						{Key: "_contract_address", Value: "bc1p953esr07atlr5j6h5w4a25r3t4lyn6rudqak986mga7zkv732p5qk9xq78"},
 						{Key: "success", Value: "true"},
 					},
 				},
@@ -59,7 +59,7 @@ func TestOnRecvPacket(t *testing.T) {
 					Type: "ibc_packet_received",
 					Attributes: []abci.EventAttribute{
 						{Key: "module", Value: "wasm"},
-						{Key: "_contract_address", Value: "cosmos1w09vr7rpe2agu0kg2zlpkdckce865l3zps8mxjurxthfh3m7035qe5hh7f"},
+						{Key: "_contract_address", Value: "bc1p953esr07atlr5j6h5w4a25r3t4lyn6rudqak986mga7zkv732p5qk9xq78"},
 						{Key: "success", Value: "false"},
 					},
 				},
@@ -73,7 +73,7 @@ func TestOnRecvPacket(t *testing.T) {
 					Type: "ibc_packet_received",
 					Attributes: []abci.EventAttribute{
 						{Key: "module", Value: "wasm"},
-						{Key: "_contract_address", Value: "cosmos1w09vr7rpe2agu0kg2zlpkdckce865l3zps8mxjurxthfh3m7035qe5hh7f"},
+						{Key: "_contract_address", Value: "bc1p953esr07atlr5j6h5w4a25r3t4lyn6rudqak986mga7zkv732p5qk9xq78"},
 						{Key: "success", Value: "true"},
 					},
 				},
@@ -93,7 +93,7 @@ func TestOnRecvPacket(t *testing.T) {
 				Type: "ibc_packet_received",
 				Attributes: []abci.EventAttribute{
 					{Key: "module", Value: "wasm"},
-					{Key: "_contract_address", Value: "cosmos1w09vr7rpe2agu0kg2zlpkdckce865l3zps8mxjurxthfh3m7035qe5hh7f"},
+					{Key: "_contract_address", Value: "bc1p953esr07atlr5j6h5w4a25r3t4lyn6rudqak986mga7zkv732p5qk9xq78"},
 					{Key: "success", Value: "false"},
 					{Key: "error", Value: "testing: invalid"}, // not redacted
 				},

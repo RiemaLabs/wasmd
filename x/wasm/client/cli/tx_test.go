@@ -15,7 +15,7 @@ import (
 )
 
 func TestParseVerificationFlags(t *testing.T) {
-	mySender := sdk.MustAccAddressFromBech32("cosmos1wyqh3n50ecatjg4vww5crmtd0nmyzusnwckw4at4gluc0m5m477q4arfek")
+	mySender := sdk.MustAccAddressFromBech32("bc1p0xlxvlhemja6c4dqv22uapctqupfhlxm9h8z3k2e72q4k9hcz7vqzk5jj0")
 
 	specs := map[string]struct {
 		srcPath     string
@@ -91,7 +91,7 @@ func TestParseAccessConfigFlags(t *testing.T) {
 			expCfg: &types.AccessConfig{Permission: types.AccessTypeEverybody},
 		},
 		"only address": {
-			args:   []string{"--instantiate-only-address=cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+			args:   []string{"--instantiate-only-address=bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7"},
 			expErr: true,
 		},
 		"only address - invalid": {
@@ -99,11 +99,11 @@ func TestParseAccessConfigFlags(t *testing.T) {
 			expErr: true,
 		},
 		"any of address": {
-			args:   []string{"--instantiate-anyof-addresses=cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
-			expCfg: &types.AccessConfig{Permission: types.AccessTypeAnyOfAddresses, Addresses: []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x", "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"}},
+			args:   []string{"--instantiate-anyof-addresses=bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7,bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg"},
+			expCfg: &types.AccessConfig{Permission: types.AccessTypeAnyOfAddresses, Addresses: []string{"bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7", "bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg"}},
 		},
 		"any of address - invalid": {
-			args:   []string{"--instantiate-anyof-addresses=cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,foo"},
+			args:   []string{"--instantiate-anyof-addresses=bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7,foo"},
 			expErr: true,
 		},
 		"not set": {
@@ -152,37 +152,37 @@ func TestParseStoreCodeGrants(t *testing.T) {
 			}},
 		},
 		"wildcard : any of addresses - single": {
-			src: []string{"*:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+			src: []string{"*:bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7"},
 			exp: []types.CodeGrant{
 				{
 					CodeHash: []byte("*"),
 					InstantiatePermission: &types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+						Addresses:  []string{"bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7"},
 					},
 				},
 			},
 		},
 		"wildcard : any of addresses - multiple": {
-			src: []string{"*:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+			src: []string{"*:bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7,bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg"},
 			exp: []types.CodeGrant{
 				{
 					CodeHash: []byte("*"),
 					InstantiatePermission: &types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x", "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+						Addresses:  []string{"bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7", "bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg"},
 					},
 				},
 			},
 		},
 		"multiple code hashes with different permissions": {
-			src: []string{"any_checksum_1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr", "any_checksum_2:nobody"},
+			src: []string{"any_checksum_1:bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7,bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg", "any_checksum_2:nobody"},
 			exp: []types.CodeGrant{
 				{
 					CodeHash: []byte("any_checksum_1"),
 					InstantiatePermission: &types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x", "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+						Addresses:  []string{"bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7", "bc1p8eumq4zlwmvr8dtau69fq8hcv3lvmna85j2xycqlm5l6zvwtkh2q24frkg"},
 					},
 				}, {
 					CodeHash: []byte("any_checksum_2"),
@@ -207,7 +207,7 @@ func TestParseStoreCodeGrants(t *testing.T) {
 			expErr: true,
 		},
 		"code hash : any of addresses - duplicate address": {
-			src:    []string{"any_checksum_1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+			src:    []string{"any_checksum_1:bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7,bc1pcqx3f8qg4w3mrvmq3ndcx225tng2tgqgpw0dquc3eyyef5y55nnqecqml7"},
 			expErr: true,
 		},
 		"empty code hash": {

@@ -33,37 +33,37 @@ func TestParseAccessConfigUpdates(t *testing.T) {
 			}},
 		},
 		"any of addresses - single": {
-			src: []string{"1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+			src: []string{"1:bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd"},
 			exp: []types.AccessConfigUpdate{
 				{
 					CodeID: 1,
 					InstantiatePermission: types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+						Addresses:  []string{"bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd"},
 					},
 				},
 			},
 		},
 		"any of addresses - multiple": {
-			src: []string{"1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+			src: []string{"1:bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd,bc1px5a7su2xzlg7qul98fe7tzlt6sk2487nn37wtnr8sv6v4mykgt8sarwaxu"},
 			exp: []types.AccessConfigUpdate{
 				{
 					CodeID: 1,
 					InstantiatePermission: types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x", "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+						Addresses:  []string{"bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd", "bc1px5a7su2xzlg7qul98fe7tzlt6sk2487nn37wtnr8sv6v4mykgt8sarwaxu"},
 					},
 				},
 			},
 		},
 		"multiple code ids with different permissions": {
-			src: []string{"1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr", "2:nobody"},
+			src: []string{"1:bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd,bc1px5a7su2xzlg7qul98fe7tzlt6sk2487nn37wtnr8sv6v4mykgt8sarwaxu", "2:nobody"},
 			exp: []types.AccessConfigUpdate{
 				{
 					CodeID: 1,
 					InstantiatePermission: types.AccessConfig{
 						Permission: types.AccessTypeAnyOfAddresses,
-						Addresses:  []string{"cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x", "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"},
+						Addresses:  []string{"bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd", "bc1px5a7su2xzlg7qul98fe7tzlt6sk2487nn37wtnr8sv6v4mykgt8sarwaxu"},
 					},
 				}, {
 					CodeID: 2,
@@ -82,7 +82,7 @@ func TestParseAccessConfigUpdates(t *testing.T) {
 			expErr: true,
 		},
 		"any of addresses - duplicate address": {
-			src:    []string{"1:cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x,cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"},
+			src:    []string{"1:bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd,bc1p87vynj02l8qfnf8pxqqeh3s2qlvmd0pdtnkeq9aprct9fa0hjgrsesg0rd"},
 			expErr: true,
 		},
 	}

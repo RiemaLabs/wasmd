@@ -275,7 +275,7 @@ func TestOnIBCPacketReceive(t *testing.T) {
 	}{
 		"all good": {
 			packetData: []byte(`{"who_am_i":{}}`),
-			expAck:     []byte(`{"ok":{"account":"cosmos1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrs2zhgh2"}}`),
+			expAck:     []byte(`{"ok":{"account":"bc1p6a8td2sy0hjx5m8ydaw9sfdum7l4leljqtpra73we7eg4j9npsnqrgqygc"}}`),
 		},
 		"with result err": {
 			packetData: []byte(`{"return_err": {"text": "my error"}}`),

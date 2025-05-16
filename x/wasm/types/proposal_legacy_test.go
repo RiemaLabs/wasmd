@@ -786,7 +786,7 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Store Code Proposal:
   Title:       Foo
   Description: Bar
-  Run as:      cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+  Run as:      bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
   WasmCode:    0102030405060708090A
   Source:      https://example.com/
   Builder:     cosmwasm/workspace-optimizer:v0.12.8
@@ -800,11 +800,11 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Instantiate Code Proposal:
   Title:       Foo
   Description: Bar
-  Run as:      cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
-  Admin:       cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+  Run as:      bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
+  Admin:       bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
   Code id:     1
   Label:       testing
-  Msg:         "{\"verifier\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\",\"beneficiary\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\"}"
+  Msg:         "{\"verifier\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\",\"beneficiary\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\"}"
   Funds:       1foo,2bar
 `,
 		},
@@ -813,11 +813,11 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Instantiate Code Proposal:
   Title:       Foo
   Description: Bar
-  Run as:      cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
-  Admin:       cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+  Run as:      bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
+  Admin:       bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
   Code id:     1
   Label:       testing
-  Msg:         "{\"verifier\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\",\"beneficiary\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\"}"
+  Msg:         "{\"verifier\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\",\"beneficiary\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\"}"
   Funds:       
 `,
 		},
@@ -826,11 +826,11 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Instantiate Code Proposal:
   Title:       Foo
   Description: Bar
-  Run as:      cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+  Run as:      bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
   Admin:       
   Code id:     1
   Label:       testing
-  Msg:         "{\"verifier\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\",\"beneficiary\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\"}"
+  Msg:         "{\"verifier\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\",\"beneficiary\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\"}"
   Funds:       
 `,
 		},
@@ -839,9 +839,9 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Migrate Contract Proposal:
   Title:       Foo
   Description: Bar
-  Contract:    cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
+  Contract:    bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
   Code id:     1
-  Msg:         "{\"verifier\":\"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4\"}"
+  Msg:         "{\"verifier\":\"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e\"}"
 `,
 		},
 		"update admin": {
@@ -849,8 +849,8 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Update Contract Admin Proposal:
   Title:       Foo
   Description: Bar
-  Contract:    cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
-  New Admin:   cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+  Contract:    bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
+  New Admin:   bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
 `,
 		},
 		"clear admin": {
@@ -858,7 +858,7 @@ func TestProposalStrings(t *testing.T) {
 			exp: `Clear Contract Admin Proposal:
   Title:       Foo
   Description: Bar
-  Contract:    cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
+  Contract:    bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
 `,
 		},
 		"pin codes": {
@@ -904,7 +904,7 @@ func TestProposalYaml(t *testing.T) {
 			}),
 			exp: `title: Foo
 description: Bar
-run_as: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+run_as: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
 wasm_byte_code: AQIDBAUGBwgJCg==
 instantiate_permission: null
 source: https://example.com/
@@ -918,11 +918,11 @@ code_hash: 6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d
 			}),
 			exp: `title: Foo
 description: Bar
-run_as: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
-admin: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+run_as: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
+admin: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
 code_id: 1
 label: testing
-msg: '{"verifier":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4","beneficiary":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"}'
+msg: '{"verifier":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e","beneficiary":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e"}'
 funds:
 - denom: foo
   amount: "1"
@@ -934,11 +934,11 @@ funds:
 			src: InstantiateContractProposalFixture(func(p *InstantiateContractProposal) { p.Funds = nil }),
 			exp: `title: Foo
 description: Bar
-run_as: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
-admin: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+run_as: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
+admin: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
 code_id: 1
 label: testing
-msg: '{"verifier":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4","beneficiary":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"}'
+msg: '{"verifier":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e","beneficiary":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e"}'
 funds: []
 `,
 		},
@@ -946,11 +946,11 @@ funds: []
 			src: InstantiateContractProposalFixture(func(p *InstantiateContractProposal) { p.Admin = "" }),
 			exp: `title: Foo
 description: Bar
-run_as: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
+run_as: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
 admin: ""
 code_id: 1
 label: testing
-msg: '{"verifier":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4","beneficiary":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"}'
+msg: '{"verifier":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e","beneficiary":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e"}'
 funds: []
 `,
 		},
@@ -958,24 +958,24 @@ funds: []
 			src: MigrateContractProposalFixture(),
 			exp: `title: Foo
 description: Bar
-contract: cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
+contract: bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
 code_id: 1
-msg: '{"verifier":"cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"}'
+msg: '{"verifier":"bc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsyjer9e"}'
 `,
 		},
 		"update admin": {
 			src: UpdateAdminProposalFixture(),
 			exp: `title: Foo
 description: Bar
-new_admin: cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4
-contract: cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
+new_admin: bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h
+contract: bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
 `,
 		},
 		"clear admin": {
 			src: ClearAdminProposalFixture(),
 			exp: `title: Foo
 description: Bar
-contract: cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr
+contract: bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp
 `,
 		},
 		"pin codes": {
@@ -1062,7 +1062,7 @@ func TestUnmarshalContentFromJson(t *testing.T) {
 
 // Deprecated: all gov v1beta1 types are supported for gov store only
 func StoreCodeProposalFixture(mutators ...func(*StoreCodeProposal)) *StoreCodeProposal {
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 	wasm := []byte{0x0}
 	// got the value from shell sha256sum
 	codeHash, err := hex.DecodeString("6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D")
@@ -1098,7 +1098,7 @@ func InstantiateContractProposalFixture(mutators ...func(p *InstantiateContractP
 			Beneficiary: anyValidAddress,
 		}
 	)
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 
 	initMsgBz, err := json.Marshal(initMsg)
 	if err != nil {
@@ -1135,7 +1135,7 @@ func InstantiateContract2ProposalFixture(mutators ...func(p *InstantiateContract
 		}
 	)
 	const (
-		anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+		anyAddress = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 		mySalt     = "myDefaultSalt"
 	)
 
@@ -1175,7 +1175,7 @@ func StoreAndInstantiateContractProposalFixture(mutators ...func(p *StoreAndInst
 			Beneficiary: anyValidAddress,
 		}
 	)
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 	wasm := []byte{0x0}
 	// got the value from shell sha256sum
 	codeHash, err := hex.DecodeString("6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D")
@@ -1222,8 +1222,8 @@ func MigrateContractProposalFixture(mutators ...func(p *MigrateContractProposal)
 		panic(err)
 	}
 	const (
-		contractAddr = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
-		anyAddress   = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+		contractAddr = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
+		anyAddress   = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 	)
 	p := &MigrateContractProposal{
 		Title:       "Foo",
@@ -1242,7 +1242,7 @@ func MigrateContractProposalFixture(mutators ...func(p *MigrateContractProposal)
 // Deprecated: all gov v1beta1 types are supported for gov store only
 func SudoContractProposalFixture(mutators ...func(p *SudoContractProposal)) *SudoContractProposal {
 	const (
-		contractAddr = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
+		contractAddr = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
 	)
 
 	p := &SudoContractProposal{
@@ -1261,8 +1261,8 @@ func SudoContractProposalFixture(mutators ...func(p *SudoContractProposal)) *Sud
 // Deprecated: all gov v1beta1 types are supported for gov store only
 func ExecuteContractProposalFixture(mutators ...func(p *ExecuteContractProposal)) *ExecuteContractProposal {
 	const (
-		contractAddr = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
-		anyAddress   = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+		contractAddr = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
+		anyAddress   = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 	)
 
 	p := &ExecuteContractProposal{
@@ -1286,8 +1286,8 @@ func ExecuteContractProposalFixture(mutators ...func(p *ExecuteContractProposal)
 // Deprecated: all gov v1beta1 types are supported for gov store only
 func UpdateAdminProposalFixture(mutators ...func(p *UpdateAdminProposal)) *UpdateAdminProposal {
 	const (
-		contractAddr = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
-		anyAddress   = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+		contractAddr = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
+		anyAddress   = "bc1pawdnl8kqr3jvujcge57en3q5ty8uztmz30jplwczcw3ug5vz77psmwvl6h"
 	)
 
 	p := &UpdateAdminProposal{
@@ -1304,7 +1304,7 @@ func UpdateAdminProposalFixture(mutators ...func(p *UpdateAdminProposal)) *Updat
 
 // Deprecated: all gov v1beta1 types are supported for gov store only
 func ClearAdminProposalFixture(mutators ...func(p *ClearAdminProposal)) *ClearAdminProposal {
-	const contractAddr = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
+	const contractAddr = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
 	p := &ClearAdminProposal{
 		Title:       "Foo",
 		Description: "Bar",

@@ -108,7 +108,7 @@ func TestModuleMigrations(t *testing.T) {
 }
 
 func TestAccessConfigMigrations(t *testing.T) {
-	addr := "cosmos1vx8knpllrj7n963p9ttd80w47kpacrhuts497x"
+	addr := "bc1ptkfdpgxtqe3fjcud2wd5ev2c4u0tjvn7fx5l6k53m53x9u6ja8aqn6sudf"
 	address, err := sdk.AccAddressFromBech32(addr)
 	require.NoError(t, err)
 

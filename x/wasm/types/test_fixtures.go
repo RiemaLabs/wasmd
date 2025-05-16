@@ -71,7 +71,7 @@ func CodeInfoFixture(mutators ...func(*CodeInfo)) CodeInfo {
 	if err != nil {
 		panic(err)
 	}
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
 	fixture := CodeInfo{
 		CodeHash:          codeHash[:],
 		Creator:           anyAddress,
@@ -84,7 +84,7 @@ func CodeInfoFixture(mutators ...func(*CodeInfo)) CodeInfo {
 }
 
 func ContractFixture(mutators ...func(*Contract)) Contract {
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
 
 	fixture := Contract{
 		ContractAddress: anyAddress,
@@ -110,7 +110,7 @@ func RandCreatedFields(info *ContractInfo) {
 }
 
 func ContractInfoFixture(mutators ...func(*ContractInfo)) ContractInfo {
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
 
 	fixture := ContractInfo{
 		CodeID:  1,
@@ -151,7 +151,7 @@ func WithSHA256CodeHash(wasmCode []byte) func(info *CodeInfo) {
 
 func MsgStoreCodeFixture(mutators ...func(*MsgStoreCode)) *MsgStoreCode {
 	wasmIdent := []byte("\x00\x61\x73\x6D")
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
 	r := &MsgStoreCode{
 		Sender:                anyAddress,
 		WASMByteCode:          wasmIdent,
@@ -164,7 +164,7 @@ func MsgStoreCodeFixture(mutators ...func(*MsgStoreCode)) *MsgStoreCode {
 }
 
 func MsgInstantiateContractFixture(mutators ...func(*MsgInstantiateContract)) *MsgInstantiateContract {
-	const anyAddress = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
+	const anyAddress = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
 	r := &MsgInstantiateContract{
 		Sender: anyAddress,
 		Admin:  anyAddress,
@@ -184,8 +184,8 @@ func MsgInstantiateContractFixture(mutators ...func(*MsgInstantiateContract)) *M
 
 func MsgExecuteContractFixture(mutators ...func(*MsgExecuteContract)) *MsgExecuteContract {
 	const (
-		anyAddress           = "cosmos1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs2m6sx4"
-		firstContractAddress = "cosmos14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s4hmalr"
+		anyAddress           = "bc1prrjrxxledarfz3hr4ddpe7vrlq2mcfn58dfn4aj9yrf93hqlm38sxuw54f"
+		firstContractAddress = "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp"
 	)
 	r := &MsgExecuteContract{
 		Sender:   anyAddress,

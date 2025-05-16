@@ -14,7 +14,7 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdkmath "cosmossdk.io/math"
 
-	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/taproot"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
@@ -40,9 +40,9 @@ func TestGrants(t *testing.T) {
 	require.NotEmpty(t, contractAddr)
 
 	granterAddr := chain.SenderAccount.GetAddress()
-	granteePrivKey := secp256k1.GenPrivKey()
+	granteePrivKey := taproot.GenPrivKey()
 	granteeAddr := sdk.AccAddress(granteePrivKey.PubKey().Address().Bytes())
-	otherPrivKey := secp256k1.GenPrivKey()
+	otherPrivKey := taproot.GenPrivKey()
 	otherAddr := sdk.AccAddress(otherPrivKey.PubKey().Address().Bytes())
 
 	chain.Fund(granteeAddr, sdkmath.NewInt(1_000_000))
@@ -135,9 +135,9 @@ func TestStoreCodeGrant(t *testing.T) {
 	chain := wasmibctesting.NewWasmTestChain(coord.GetChain(ibctesting.GetChainID(1)))
 
 	granterAddr := chain.SenderAccount.GetAddress()
-	granteePrivKey := secp256k1.GenPrivKey()
+	granteePrivKey := taproot.GenPrivKey()
 	granteeAddr := sdk.AccAddress(granteePrivKey.PubKey().Address().Bytes())
-	otherPrivKey := secp256k1.GenPrivKey()
+	otherPrivKey := taproot.GenPrivKey()
 	otherAddr := sdk.AccAddress(otherPrivKey.PubKey().Address().Bytes())
 
 	chain.Fund(granteeAddr, sdkmath.NewInt(1_000_000))
@@ -223,9 +223,9 @@ func TestGzipStoreCodeGrant(t *testing.T) {
 	chain := wasmibctesting.NewWasmTestChain(coord.GetChain(ibctesting.GetChainID(1)))
 
 	granterAddr := chain.SenderAccount.GetAddress()
-	granteePrivKey := secp256k1.GenPrivKey()
+	granteePrivKey := taproot.GenPrivKey()
 	granteeAddr := sdk.AccAddress(granteePrivKey.PubKey().Address().Bytes())
-	otherPrivKey := secp256k1.GenPrivKey()
+	otherPrivKey := taproot.GenPrivKey()
 	otherAddr := sdk.AccAddress(otherPrivKey.PubKey().Address().Bytes())
 
 	chain.Fund(granteeAddr, sdkmath.NewInt(1_000_000))
@@ -305,9 +305,9 @@ func TestBrokenGzipStoreCodeGrant(t *testing.T) {
 	chain := wasmibctesting.NewWasmTestChain(coord.GetChain(ibctesting.GetChainID(1)))
 
 	granterAddr := chain.SenderAccount.GetAddress()
-	granteePrivKey := secp256k1.GenPrivKey()
+	granteePrivKey := taproot.GenPrivKey()
 	granteeAddr := sdk.AccAddress(granteePrivKey.PubKey().Address().Bytes())
-	otherPrivKey := secp256k1.GenPrivKey()
+	otherPrivKey := taproot.GenPrivKey()
 	otherAddr := sdk.AccAddress(otherPrivKey.PubKey().Address().Bytes())
 
 	chain.Fund(granteeAddr, sdkmath.NewInt(1_000_000))
