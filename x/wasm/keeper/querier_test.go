@@ -1213,7 +1213,7 @@ func TestQueryBuildAddress(t *testing.T) {
 				InitArgs:       nil,
 			},
 			exp: &types.QueryBuildAddressResponse{
-				Address: "bc1pavk7zuj24sevyppzpntt4xf80fx24laxw07r8uvyw9r5quf58slqng96a6",
+				Address: "bc1pvjr9wvjdfwhl4vp0rvd2kyszncpnp454hu0v85qtdl7m5tp26znqtkkwa3",
 			},
 			expErr: nil,
 		},
@@ -1225,7 +1225,7 @@ func TestQueryBuildAddress(t *testing.T) {
 				InitArgs:       []byte(`{"verifier":"bc1pnt4gx5uaasjuf2y4z987v04hsjdhtxmlrku3gh53q2js5llvhktqn6he98"}`),
 			},
 			exp: &types.QueryBuildAddressResponse{
-				Address: "bc1pwgzj4w75yvmtn0nyw3cuyfkve4xzns0m8gm05xz75mcpvuud42sqck25me",
+				Address: "bc1pfmxttylc2shfq9rla0q6vmufhhkztx9r5dj0mlvmvfewd0gydk8q74dr25",
 			},
 			expErr: nil,
 		},

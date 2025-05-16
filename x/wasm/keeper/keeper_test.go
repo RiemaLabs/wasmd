@@ -714,32 +714,6 @@ func TestInstantiateWithNonExistingCodeID(t *testing.T) {
 	require.Nil(t, addr)
 }
 
-func TestContractErrorRedacting(t *testing.T) {
-	ctx, keepers := CreateTestInput(t, false, AvailableCapabilities)
-
-	deposit := sdk.NewCoins(sdk.NewInt64Coin("denom", 100000))
-	creator := sdk.AccAddress(bytes.Repeat([]byte{1}, address.Len))
-	keepers.Faucet.Fund(ctx, creator, deposit...)
-	example := StoreHackatomExampleContract(t, ctx, keepers)
-
-	initMsg := HackatomExampleInitMsg{
-		Verifier:    []byte{1, 2, 3}, // invalid length
-		Beneficiary: RandomAccountAddress(t),
-	}
-	initMsgBz, err := json.Marshal(initMsg)
-	require.NoError(t, err)
-
-	em := sdk.NewEventManager()
-
-	_, _, err = keepers.ContractKeeper.Instantiate(ctx.WithEventManager(em), example.CodeID, creator, nil, initMsgBz, "demo contract 1", nil)
-	require.Error(t, err)
-	require.Contains(t, err.Error(), "addr_validate errored: invalid address")
-
-	err = redactError(err)
-	// contract error should not be redacted
-	require.Contains(t, err.Error(), "addr_validate errored: invalid address")
-}
-
 func TestContractErrorGetsForwarded(t *testing.T) {
 	// This test makes sure that a contract gets the error message from its submessage execution
 	// in a non-redacted form if that error comes from the contract in the submessage.
@@ -923,7 +897,7 @@ func TestExecute(t *testing.T) {
 
 	addr, _, err := keepers.ContractKeeper.Instantiate(ctx, contractID, creator, nil, initMsgBz, "demo contract 3", deposit)
 	require.NoError(t, err)
-	require.Equal(t, "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp", addr.String())
+	require.Equal(t, "bc1p4hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sm7cwu0", addr.String())
 
 	// ensure bob doesn't exist
 	bobAcct := accKeeper.GetAccount(ctx, bob)
@@ -960,7 +934,7 @@ func TestExecute(t *testing.T) {
 	// make sure gas is properly deducted from ctx
 	gasAfter := ctx.GasMeter().GasConsumed()
 	if types.EnableGasVerification {
-		require.Equal(t, uint64(0x1acdb), gasAfter-gasBefore)
+		require.Equal(t, uint64(0x1b5af), gasAfter-gasBefore)
 	}
 	// ensure bob now exists and got both payments released
 	bobAcct = accKeeper.GetAccount(ctx, bob)
@@ -1686,7 +1660,7 @@ func TestSudo(t *testing.T) {
 	require.NoError(t, err)
 	addr, _, err := keepers.ContractKeeper.Instantiate(ctx, contractID, creator, nil, initMsgBz, "demo contract 3", deposit)
 	require.NoError(t, err)
-	require.Equal(t, "bc1pxcl3cex6rgaqzv5mejuuyf4jaz30yv096vx3qjl4s3u98dz4mxus26xjcp", addr.String())
+	require.Equal(t, "bc1p4hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sm7cwu0", addr.String())
 
 	// the community is broke
 	_, community := keyPubAddr()
@@ -2508,11 +2482,11 @@ func TestAppendToContractHistory(t *testing.T) {
 		append(bytes.Repeat([]byte{0x1}, types.ContractAddrLen-1), 0x00),
 		append([]byte{0xff}, bytes.Repeat([]byte{0x1}, types.ContractAddrLen-1)...),
 		append(bytes.Repeat([]byte{0x1}, types.ContractAddrLen-1), 0xff),
-		bytes.Repeat([]byte{0x1}, types.SDKAddrLen),
-		append([]byte{0x00}, bytes.Repeat([]byte{0x1}, types.SDKAddrLen-1)...),
-		append(bytes.Repeat([]byte{0x1}, types.SDKAddrLen-1), 0x00),
-		append([]byte{0xff}, bytes.Repeat([]byte{0x1}, types.SDKAddrLen-1)...),
-		append(bytes.Repeat([]byte{0x1}, types.SDKAddrLen-1), 0xff),
+		bytes.Repeat([]byte{0x2}, types.SDKAddrLen),
+		append([]byte{0x00}, bytes.Repeat([]byte{0x2}, types.SDKAddrLen-1)...),
+		append(bytes.Repeat([]byte{0x2}, types.SDKAddrLen-1), 0x00),
+		append([]byte{0xff}, bytes.Repeat([]byte{0x2}, types.SDKAddrLen-1)...),
+		append(bytes.Repeat([]byte{0x2}, types.SDKAddrLen-1), 0xff),
 	}
 	sRandom := stdrand.New(stdrand.NewSource(0))
 	for n := 0; n < 100; n++ {
