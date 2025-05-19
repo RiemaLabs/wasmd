@@ -14,7 +14,7 @@ import (
 var ModelFuzzers = []interface{}{FuzzAddr, FuzzAddrString, FuzzAbsoluteTxPosition, FuzzContractInfo, FuzzStateModel, FuzzAccessType, FuzzAccessConfig, FuzzContractCodeHistory}
 
 func FuzzAddr(m *sdk.AccAddress, c fuzz.Continue) {
-	*m = make([]byte, 20)
+	*m = make([]byte, 32)
 	c.Read(*m)
 }
 
