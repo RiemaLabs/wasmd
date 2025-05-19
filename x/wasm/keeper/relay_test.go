@@ -19,8 +19,7 @@ import (
 	"github.com/CosmWasm/wasmd/x/wasm/types"
 )
 
-// @nubit: TODO: Fix this test.
-
+// TODO(@nubit): Fix this test.
 func TestOnOpenChannel(t *testing.T) {
 	var m wasmtesting.MockWasmEngine
 	wasmtesting.MakeIBCInstantiable(&m)
