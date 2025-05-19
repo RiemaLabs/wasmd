@@ -9,14 +9,17 @@ import (
 	wasmvmtypes "github.com/CosmWasm/wasmvm/v2/types"
 
 	errorsmod "cosmossdk.io/errors"
+	"cosmossdk.io/x/tx/signing"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/codec"
+	"github.com/cosmos/cosmos-sdk/codec/address"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/auth/tx"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
+	"github.com/cosmos/gogoproto/proto"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	"github.com/CosmWasm/wasmd/x/wasm/keeper/testdata"
@@ -216,7 +219,10 @@ func SimulateMsgMigrateContract(
 			Msg:      []byte(`{}`),
 		}
 
-		txCtx := BuildOperationInput(r, app, ctx, &migrateMsg, simAccount, ak, bk, nil)
+		txCtx, err := BuildOperationInput(r, app, ctx, &migrateMsg, simAccount, ak, bk, nil)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgMigrateContract{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -258,7 +264,10 @@ func SimulateMsgClearAdmin(
 			Sender:   simAccount.Address.String(),
 			Contract: ctAddress.String(),
 		}
-		txCtx := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		txCtx, err := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgClearAdmin{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -309,7 +318,10 @@ func SimulateMsgUpdateAmin(
 			NewAdmin: newAdmin.Address.String(),
 			Contract: ctAddress.String(),
 		}
-		txCtx := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		txCtx, err := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgUpdateAdmin{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -342,7 +354,10 @@ func SimulateMsgStoreCode(
 			WASMByteCode:          wasmBz,
 			InstantiatePermission: &config,
 		}
-		txCtx := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		txCtx, err := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, nil)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgStoreCode{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -401,7 +416,10 @@ func SimulateMsgInstantiateContract(
 			Msg:    []byte(`{}`),
 			Funds:  deposit,
 		}
-		txCtx := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, deposit)
+		txCtx, err := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, deposit)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgInstantiateContract{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -459,7 +477,10 @@ func SimulateMsgExecuteContract(
 			return simtypes.NoOpMsg(types.ModuleName, types.MsgExecuteContract{}.Type(), "contract execute payload"), nil, err
 		}
 
-		txCtx := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, deposit)
+		txCtx, err := BuildOperationInput(r, app, ctx, &msg, simAccount, ak, bk, deposit)
+		if err != nil {
+			return simtypes.NoOpMsg(types.ModuleName, types.MsgExecuteContract{}.Type(), "build operation input"), nil, err
+		}
 		return simulation.GenAndDeliverTxWithRandFees(txCtx)
 	}
 }
@@ -477,8 +498,19 @@ func BuildOperationInput(
 	ak types.AccountKeeper,
 	bk BankKeeper,
 	deposit sdk.Coins,
-) simulation.OperationInput {
-	interfaceRegistry := codectypes.NewInterfaceRegistry()
+) (simulation.OperationInput, error) {
+	interfaceRegistry, err := codectypes.NewInterfaceRegistryWithOptions(codectypes.InterfaceRegistryOptions{
+		ProtoFiles: proto.HybridResolver,
+		SigningOptions: signing.Options{
+			AddressCodec: address.NewTaprootCodec(&sdk.BitcoinNetParams),
+			ValidatorAddressCodec: address.Bech32Codec{
+				Bech32Prefix: sdk.GetConfig().GetBech32ValidatorAddrPrefix(),
+			},
+		},
+	})
+	if err != nil {
+		return simulation.OperationInput{}, err
+	}
 	txConfig := tx.NewTxConfig(codec.NewProtoCodec(interfaceRegistry), tx.DefaultSignModes)
 	return simulation.OperationInput{
 		R:               r,
@@ -492,7 +524,7 @@ func BuildOperationInput(
 		Bankkeeper:      bk,
 		ModuleName:      types.ModuleName,
 		CoinsSpentInMsg: deposit,
-	}
+	}, nil
 }
 
 // DefaultSimulationExecuteContractSelector picks the first contract address
