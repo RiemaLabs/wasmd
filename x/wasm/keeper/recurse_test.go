@@ -220,7 +220,7 @@ func TestLimitRecursiveQueryGas(t *testing.T) {
 		GasWork2kDiscounted uint64 = 18_264 + 432
 
 		// This is overhead for calling into a sub-contract
-		GasReturnHashed uint64 = 48 + 132
+		GasReturnHashed uint64 = 48 + 132 + 156
 	)
 
 	cases := map[string]struct {
@@ -270,7 +270,7 @@ func TestLimitRecursiveQueryGas(t *testing.T) {
 			expectQueriesFromContract: 10,
 			expectOutOfGas:            false,
 			expectError:               "query wasm contract failed",                                                 // Error we get from the contract instance doing the failing query, not wasmd
-			expectedGas:               GasWork2k + GasReturnHashed + 9*(GasWork2kDiscounted+GasReturnHashed) + 3279, // lots of additional gas for long error message
+			expectedGas:               GasWork2k + GasReturnHashed + 9*(GasWork2kDiscounted+GasReturnHashed) + 3124, // lots of additional gas for long error message
 		},
 	}
 
